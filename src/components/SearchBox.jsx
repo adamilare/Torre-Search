@@ -1,19 +1,27 @@
 import { useDispatch } from "react-redux";
-import { getSearch } from "../store/search/searchThunk";
+import { getRecentSearches, getSearch } from "../store/search/searchThunk";
 
-function SearchInput() {
+function SearchBox() {
   const dispatch = useDispatch();
 
   const handleFocus = (e) => {
-    console.log("handleFocus");
-    console.log(e.target);
+    if (e.target.value === "") {
+      dispatch(getRecentSearches());
+    }
+  };
+
+  const handleSearch = (e) => {
+    if (e.target.value !== "") {
+      dispatch(getRecentSearches());
+    }
+    dispatch(getSearch(e.target.value));
   };
 
   return (
     <>
       <div>
-        <div className="flex w-full items-center">
-          <div className="flex flex-col w-full py-[10px] flex-grow md:py-4 md:pl-4 relative border border-black/10 bg-white dark:border-gray-900/50 dark:text-white dark:bg-gray-700 rounded-xl shadow-xs dark:shadow-xs">
+        <div className="search-box">
+          <div className="">
             <input
               id="search-input"
               tabIndex="0"
@@ -23,10 +31,10 @@ function SearchInput() {
                 handleFocus(e);
               }}
               onChange={(e) => {
-                dispatch(getSearch(e.target.value));
+                handleSearch(e);
               }}
               placeholder="Search for people or jobs"
-              className=""
+              className="search-input"
             />
           </div>
         </div>
@@ -35,4 +43,4 @@ function SearchInput() {
   );
 }
 
-export default SearchInput;
+export default SearchBox;

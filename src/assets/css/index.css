@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@tailwind base; /* stylelint-disable-line*/
+@tailwind components; /* stylelint-disable-line*/
+@tailwind utilities; /* stylelint-disable-line*/
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -14,6 +14,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-size-adjust: 100%;
+
+  --white-tint: rgba(255, 255, 255, 0.65);
 }
 
 a {
@@ -29,9 +31,50 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: rgb(1, 1, 1);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+  background-color: #27292d !important;
+  color: var(--white-tint);
+  min-height: 56px;
+  padding: 0 8px 0 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.m-section {
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 24px 16px;
+  position: relative;
+  background: none !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  min-height: calc(100vh - 8rem);
+}
+
+.search-box {
+  border-radius: 24px;
+  border: 1px solid var(--white-tint);
+  color: rgba(255, 255, 255, 65%);
+}
+
+.search-input {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding: 0.5rem 1rem;
 }
 
 h1 {

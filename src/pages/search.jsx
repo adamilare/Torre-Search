@@ -1,12 +1,13 @@
-import { useState } from "react";
 import "../assets/css/App.css";
-import SearchInput from "../components/search";
+import SearchBox from "../components/SearchBox";
+import SearchItems from "../components/SearchItems";
 
 function Home() {
   return (
-    <>
-      <SearchInput />
-    </>
+    <div className="">
+      <SearchBox />
+      <SearchItems />
+    </div>
   );
 }
 
