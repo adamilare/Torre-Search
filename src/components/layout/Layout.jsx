@@ -4,7 +4,7 @@ import NavBar from "./NavBar";
 const Layout = () => (
   <>
     <NavBar />
-    <section className="section">
+    <section className="m-section">
       <Outlet />
     </section>
   </>
