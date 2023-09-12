@@ -16,6 +16,7 @@
   text-size-adjust: 100%;
 
   --white-tint: rgba(255, 255, 255, 0.65);
+  --brand-color: rgb(205, 220, 57);
 }
 
 a {
@@ -34,6 +35,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: rgb(1, 1, 1);
+  color: var(--white-tint);
 }
 
 .navbar {
@@ -48,6 +50,16 @@ body {
   position: sticky;
   top: 0;
   z-index: 999;
+}
+
+.nav-item {
+  color: var(--brand-color) !important;
+  font-weight: 700;
+  padding: 0 1rem;
+}
+
+.nav-item.active {
+  color: var(--white-tint) !important;
 }
 
 .m-section {
@@ -75,6 +87,7 @@ body {
   outline: none;
   border: none;
   padding: 0.5rem 1rem;
+  color: var(--white-tint);
 }
 
 h1 {
