@@ -2,7 +2,7 @@ import "../assets/css/App.css";
 import SearchBox from "../components/SearchBox";
 import SearchItems from "../components/SearchItems";
 
-function Home() {
+function Search() {
   return (
     <div className="">
       <SearchBox />
@@ -11,4 +11,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Search;
