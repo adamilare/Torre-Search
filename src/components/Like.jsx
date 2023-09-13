@@ -1,6 +1,6 @@
 import { MdFavorite } from "react-icons/md";
 
-const Like = (props) => {
+const Like = () => {
   return (
     <span className="fav-icon">
       <MdFavorite />

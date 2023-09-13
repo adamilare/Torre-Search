@@ -24,7 +24,7 @@ function SearchItems() {
       <div className="">
         <div className="search-items">
           {searchItems.map((item) => (
-            <SearchItem key={item.id} item={item} />
+            <SearchItem key={item.ardaId} item={item} />
           ))}
         </div>
       </div>

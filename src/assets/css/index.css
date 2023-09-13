@@ -104,7 +104,7 @@ body {
   display: flex;
   justify-content: center;
   color: var(--brand-color);
-  margin-right: 30px;
+  margin-right: 20px;
   cursor: pointer;
   fill-opacity: 0.2;
 }
