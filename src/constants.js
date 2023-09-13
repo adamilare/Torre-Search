@@ -1,2 +1,2 @@
 export const BASE_URL =
-  process.env.REACT_APP_BASE_URL || `http://127.0.0.1:4200/api/`;
+  process.env.REACT_APP_BASE_URL || `https://search-test-server.onrender.com`;
