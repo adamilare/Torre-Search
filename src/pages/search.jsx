@@ -4,7 +4,7 @@ import SearchItems from "../components/SearchItems";
 
 function Search() {
   return (
-    <div className="">
+    <div className="search-item-container">
       <SearchBox />
       <SearchItems />
     </div>

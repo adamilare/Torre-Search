@@ -76,6 +76,10 @@ body {
   min-height: calc(100vh - 8rem);
 }
 
+.search-item-container {
+  min-width: 50%;
+}
+
 .search-box {
   border-radius: 24px;
   border: 1px solid var(--white-tint);
@@ -87,7 +91,27 @@ body {
   outline: none;
   border: none;
   padding: 0.5rem 1rem;
+  width: 100%;
   color: var(--white-tint);
+}
+
+.search-item {
+  display: flex;
+  align-items: center;
+}
+
+.fav-icon {
+  display: flex;
+  justify-content: center;
+  color: var(--brand-color);
+  margin-right: 30px;
+  cursor: pointer;
+  fill-opacity: 0.2;
+}
+
+.fav-icon:hover {
+  fill-opacity: 1;
+  transition: fill-opacity 0.2s ease-in-out;
 }
 
 h1 {

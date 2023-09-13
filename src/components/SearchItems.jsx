@@ -7,7 +7,6 @@ function SearchItems() {
   const [searchItems, setSearchItems] = useState([]);
 
   useEffect(() => {
-    console.log("uesEffect", searchResult);
     if (searchResult !== null && searchResult !== undefined) {
       setSearchItems(searchResult.data.results);
     }
@@ -22,7 +21,7 @@ function SearchItems() {
 
   return (
     <>
-      <div>
+      <div className="">
         <div className="search-items">
           {searchItems.map((item) => (
             <SearchItem key={item.id} item={item} />
