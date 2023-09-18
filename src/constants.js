@@ -1,3 +1,2 @@
 export const BASE_URL =
-  process.env.REACT_APP_BASE_URL ||
-  `https://search-test-server.onrender.com/api/`;
+  import.meta.env.VITE_APP_API_URL || `http://127.0.0.1:4200/api/`;

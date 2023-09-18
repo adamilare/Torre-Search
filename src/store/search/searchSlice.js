@@ -8,11 +8,18 @@ const initialState = {
   recentSearchesLoading: false,
   resultError: null,
   recentSearchesError: null,
+  isSearching: false,
 };
 
-const homeSlice = createSlice({
+const setIsSearchingReducer = (state, { payload }) => ({
+  ...state,
+  isSearching: payload,
+});
+
+const searchSlice = createSlice({
   name: "search",
   initialState,
+  reducers: { setIsSearching: setIsSearchingReducer },
   extraReducers: (builder) => {
     builder
       .addCase(getSearch.pending, (state) => ({
@@ -48,4 +55,5 @@ const homeSlice = createSlice({
   },
 });
 
-export default homeSlice.reducer;
+export const { setIsSearching } = searchSlice.actions;
+export default searchSlice.reducer;

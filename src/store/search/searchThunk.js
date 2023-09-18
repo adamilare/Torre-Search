@@ -18,7 +18,7 @@ const getSearch = createAsyncThunk(
         }
       );
 
-      return fulfillWithValue(data);
+      return fulfillWithValue(data.data.results);
     } catch (error) {
       return rejectWithValue({ ...error.response.data.error });
     }
@@ -31,7 +31,7 @@ const getRecentSearches = createAsyncThunk(
     try {
       const { data } = await axios.get(`${baseUrl}search/recent`);
 
-      return fulfillWithValue(data);
+      return fulfillWithValue(data.data);
     } catch (error) {
       return rejectWithValue({ ...error.response.data.error });
     }

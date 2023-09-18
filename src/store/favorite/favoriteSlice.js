@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { setFavorite, getFavorites } from "./favoriteThunk";
+import { addFavorite, getFavorites, removeFavorite } from "./favoriteThunk";
 
 const initialState = {
   favorites: null,
@@ -7,22 +7,32 @@ const initialState = {
   error: null,
 };
 
+const unSetFavoriteReducer = (state, { payload }) => {
+  const newFavorites = state.favorites.filter((item) => item.id !== payload);
+
+  return {
+    ...state,
+    favorites: newFavorites,
+  };
+};
+
 const favoriteSlice = createSlice({
   name: "favorite",
   initialState,
+  reducers: { unSetFavorite: unSetFavoriteReducer },
   extraReducers: (builder) => {
     builder
-      .addCase(setFavorite.pending, (state) => ({
+      .addCase(addFavorite.pending, (state) => ({
         ...state,
         loading: true,
       }))
-      .addCase(setFavorite.fulfilled, (state, { payload }) => ({
+      .addCase(addFavorite.fulfilled, (state, { payload }) => ({
         ...state,
         loading: false,
         error: null,
         favorites: payload,
       }))
-      .addCase(setFavorite.rejected, (state, { payload }) => ({
+      .addCase(addFavorite.rejected, (state, { payload }) => ({
         ...state,
         loading: false,
         error: payload,
@@ -41,8 +51,24 @@ const favoriteSlice = createSlice({
         ...state,
         loading: false,
         error: payload,
+      }))
+      .addCase(removeFavorite.pending, (state) => ({
+        ...state,
+        loading: true,
+      }))
+      .addCase(removeFavorite.fulfilled, (state, { payload }) => ({
+        ...state,
+        loading: false,
+        error: null,
+        favorites: payload,
+      }))
+      .addCase(removeFavorite.rejected, (state, { payload }) => ({
+        ...state,
+        loading: false,
+        error: payload,
       }));
   },
 });
 
+export const { unSetFavorite } = favoriteSlice.actions;
 export default favoriteSlice.reducer;
