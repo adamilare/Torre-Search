@@ -1,20 +1,21 @@
 import { useDispatch } from "react-redux";
 import { getRecentSearches, getSearch } from "../store/search/searchThunk";
+import { setIsSearching } from "../store/search/searchSlice";
 
 function SearchBox() {
   const dispatch = useDispatch();
 
   const handleFocus = (e) => {
     if (e.target.value === "") {
+      dispatch(setIsSearching(true));
       dispatch(getRecentSearches());
     }
   };
 
   const handleSearch = (e) => {
     if (e.target.value !== "") {
-      dispatch(getRecentSearches());
+      dispatch(getSearch(e.target.value));
     }
-    dispatch(getSearch(e.target.value));
   };
 
   return (
@@ -27,9 +28,7 @@ function SearchBox() {
               tabIndex="0"
               inputMode="search"
               type="text"
-              onFocus={(e) => {
-                handleFocus(e);
-              }}
+              onFocus={handleFocus}
               onChange={(e) => {
                 handleSearch(e);
               }}

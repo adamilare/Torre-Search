@@ -15,8 +15,8 @@
   -moz-osx-font-smoothing: grayscale;
   text-size-adjust: 100%;
 
-  --white-tint: rgba(255, 255, 255, 0.65);
-  --brand-color: rgb(205, 220, 57);
+  --white-tint: rgba(255, 255, 255, 0.65); /* stylelint-disable-line */
+  --brand-color: rgb(205, 220, 57); /* stylelint-disable-line */
 }
 
 a {
@@ -34,7 +34,7 @@ body {
   display: flex;
   min-width: 320px;
   min-height: 100vh;
-  background-color: rgb(1, 1, 1);
+  background-color: rgb(1, 1, 1); /* stylelint-disable-line */
   color: var(--white-tint);
 }
 
@@ -83,7 +83,7 @@ body {
 .search-box {
   border-radius: 24px;
   border: 1px solid var(--white-tint);
-  color: rgba(255, 255, 255, 65%);
+  color: rgba(255, 255, 255, 65%); /* stylelint-disable-line */
 }
 
 .search-input {
@@ -109,8 +109,12 @@ body {
   fill-opacity: 0.2;
 }
 
+.fav-icon.active,
 .fav-icon:hover {
   fill-opacity: 1;
+}
+
+.fav-icon:hover {
   transition: fill-opacity 0.2s ease-in-out;
 }
 

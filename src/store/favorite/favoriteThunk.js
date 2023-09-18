@@ -4,13 +4,13 @@ import { BASE_URL } from "../../constants";
 
 const baseUrl = BASE_URL;
 
-const setFavorite = createAsyncThunk(
+const addFavorite = createAsyncThunk(
   "favorite/addToFavorite",
-  async (ardaId, { rejectWithValue, fulfillWithValue }) => {
+  async (regData, { rejectWithValue, fulfillWithValue }) => {
     try {
       const { data } = await axios.post(
         `${baseUrl}favorite`,
-        { ardaId },
+        { ...regData },
         {
           headers: {
             "Content-Type": "application/json",
@@ -18,7 +18,7 @@ const setFavorite = createAsyncThunk(
         }
       );
 
-      return fulfillWithValue(data);
+      return fulfillWithValue(data.data);
     } catch (error) {
       return rejectWithValue({ ...error.response.data.error });
     }
@@ -26,16 +26,32 @@ const setFavorite = createAsyncThunk(
 );
 
 const getFavorites = createAsyncThunk(
-  "search/getRecentSearches",
+  "favourite/getFavorites",
   async (_, { rejectWithValue, fulfillWithValue }) => {
     try {
       const { data } = await axios.get(`${baseUrl}favorite`);
 
-      return fulfillWithValue(data);
+      return fulfillWithValue(data.data);
     } catch (error) {
       return rejectWithValue({ ...error.response.data.error });
     }
   }
 );
 
-export { setFavorite, getFavorites };
+const removeFavorite = createAsyncThunk(
+  "favorite/removeFavorite",
+  async (id, { rejectWithValue, fulfillWithValue }) => {
+    try {
+      const { data } = await axios.delete(`${baseUrl}favorite/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      return fulfillWithValue(data.data);
+    } catch (error) {
+      return rejectWithValue({ ...error.response.data.error });
+    }
+  }
+);
+
+export { addFavorite, getFavorites, removeFavorite };
