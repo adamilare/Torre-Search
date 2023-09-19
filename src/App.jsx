@@ -1,20 +1,13 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import Layout from "./components/layout/Layout";
-import Search from "./pages/search";
-import NotFound from "./pages/NotFound";
-import Favorite from "./pages/Favorite";
+import { Outlet } from "react-router-dom";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Navigate to="/search" />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/favorite" element={<Favorite />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
+      <NavBar />
+      <section className="m-section">
+        <Outlet />
+      </section>
     </>
   );
 }
